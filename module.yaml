@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/KernelSU-Modules/tools/main/schemas/module.schema.json
+# KernelSU Modules metadata. Reference: https://developers.kernelsu.org/docs/module-yaml
+# version / versionCode come from module/module.prop inside the release ZIP, not from this file.
+schemaVersion: 1
+id: aegis_firewall
+name: AEGIS // FIREWALL
+summary: Kernel-level per-app firewall with a full WebUI. Per-app Wi-Fi, mobile, VPN, LAN and roaming rules, host and IP rules, screen-off blocking, live connections and a lockdown kill switch. No VPN slot, no companion app.
+description: README.md
+license: MIT
+homepage: https://github.com/kreza6173-pixel/aegis-firewall
+support: https://github.com/kreza6173-pixel/aegis-firewall/issues
+tags: [firewall, network, privacy, iptables, webui, security]
+metamodule: false
+
+authors:
+  - name: kreza6173-pixel
+    url: https://github.com/kreza6173-pixel
+
+compatibility:
+  androidMinApi: 28
+  architectures: [arm64-v8a, armeabi-v7a, x86_64, x86]
+
+release:
+  assetPattern: "aegis_firewall-*.zip"

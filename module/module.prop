@@ -1,0 +1,6 @@
+id=aegis_firewall
+name=AEGIS // FIREWALL
+version=v1.0.0
+versionCode=100
+author=kreza6173-pixel
+description=Kernel-level per-app firewall with WebUI. Wi-Fi, mobile, VPN, LAN and roaming rules, per-app host rules, screen-off blocking, live connections.

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>AEGIS // FIREWALL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="logo"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/></svg></div>
+    <div><div class="title">AEGIS <span>//</span> FIREWALL</div><div class="sub" id="subline">Loading...</div></div>
+  </div>
+  <button class="pill" id="statePill">...</button>
+</header>
+
+<main>
+  <!-- APPS -->
+  <section class="tab active" id="tab-apps">
+    <div class="toolbar">
+      <div class="search"><svg viewBox="0 0 24 24"><path d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg><input id="q" placeholder="Search apps, packages or UIDs" autocomplete="off"></div>
+      <div class="seg" id="appFilter">
+        <button data-f="user" class="on">User</button><button data-f="system">System</button><button data-f="blocked">Blocked</button><button data-f="all">All</button>
+      </div>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="colhead" id="colhead"></div>
+    <div id="appList" class="list"></div>
+    <label class="tiny check"><input type="checkbox" id="showNoNet"> Show apps without the INTERNET permission</label>
+  </section>
+
+  <!-- LIVE -->
+  <section class="tab" id="tab-live">
+    <div class="toolbar row">
+      <div class="seg" id="liveFilter"><button data-f="active" class="on">Active</button><button data-f="all">All sockets</button></div>
+      <button class="ghost" id="livePause">Pause</button>
+    </div>
+    <p class="hint">Live sockets read from the kernel. Tap a remote address to block it for that app or for everyone.</p>
+    <div id="liveList" class="list"></div>
+  </section>
+
+  <!-- ACTIVITY -->
+  <section class="tab" id="tab-log">
+    <div class="toolbar row">
+      <div class="seg" id="logFilter"><button data-f="counters" class="on">Blocked per app</button><button data-f="kernel">Kernel log</button></div>
+      <button class="ghost" id="logRefresh">Refresh</button>
+    </div>
+    <p class="hint" id="logHint"></p>
+    <div id="logList" class="list"></div>
+  </section>
+
+  <!-- RULES -->
+  <section class="tab" id="tab-rules">
+    <div class="card">
+      <h3>Host and address rules</h3>
+      <p class="hint">Allow or block a domain, IP or subnet, optionally on a port, for one app or for every app. These run before the network policy, so an allow rule lets a blocked app reach just that host.</p>
+      <div class="form" id="ruleForm">
+        <input id="rApp" list="appOptions" placeholder="App (package) or * for all apps">
+        <datalist id="appOptions"></datalist>
+        <div class="grid2">
+          <select id="rAct"><option value="block">Block</option><option value="allow">Allow</option></select>
+          <select id="rProto"><option value="*">TCP + UDP</option><option value="tcp">TCP</option><option value="udp">UDP</option></select>
+        </div>
+        <input id="rDest" placeholder="Domain, IP or CIDR (example.com, 1.2.3.4, 10.0.0.0/8, 2001:db8::/32)">
+        <input id="rPort" placeholder="Port or range (optional, e.g. 443 or 8000-9000)">
+        <button class="primary" id="rAdd">Add rule</button>
+      </div>
+    </div>
+    <div id="ruleList" class="list"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="tab" id="tab-settings">
+    <div id="settingsBox"></div>
+  </section>
+</main>
+
+<nav class="bottom">
+  <button data-tab="apps" class="on"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>Apps</button>
+  <button data-tab="live"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Live</button>
+  <button data-tab="log"><svg viewBox="0 0 24 24"><path d="M12 8v5l3 2M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z"/></svg>Activity</button>
+  <button data-tab="rules"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg>Rules</button>
+  <button data-tab="settings"><svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Settings</button>
+</nav>
+
+<div class="sheet-bg" id="sheetBg"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+<div class="busy" id="busy"><span></span>Applying</div>
+<script src="app.js"></script>
+<script src="support.js"></script>
+</body>
+</html>

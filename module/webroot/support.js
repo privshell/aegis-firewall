@@ -1,7 +1,7 @@
 'use strict';
 /* Support card, added under About in the Settings tab. */
 (function () {
-  const DONATE_URL = 'https://github.com/kreza6173-pixel/kreza6173-pixel/blob/main/DONATE.md';
+  const DONATE_URL = 'https://github.com/privshell/privshell/blob/main/DONATE.md';
   function openDonate() {
     if (window.ksu && typeof window.ksu.exec === 'function') {
       const cb = `__support_cb_${Date.now()}`;

@@ -7,14 +7,14 @@ name: AEGIS // FIREWALL
 summary: Kernel-level per-app firewall with a full WebUI. Per-app Wi-Fi, mobile, VPN, LAN and roaming rules, host and IP rules, screen-off blocking, live connections and a lockdown kill switch. No VPN slot, no companion app.
 description: README.md
 license: MIT
-homepage: https://github.com/kreza6173-pixel/aegis-firewall
-support: https://github.com/kreza6173-pixel/aegis-firewall/issues
+homepage: https://github.com/privshell/aegis-firewall
+support: https://github.com/privshell/aegis-firewall/issues
 tags: [firewall, network, privacy, iptables, webui, security]
 metamodule: false
 
 authors:
-  - name: kreza6173-pixel
-    url: https://github.com/kreza6173-pixel
+  - name: privshell
+    url: https://github.com/privshell
 
 compatibility:
   androidMinApi: 28

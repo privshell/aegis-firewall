@@ -38,7 +38,7 @@ Extra: a Live view of every socket per app (read straight from `/proc/net`), wit
 - Kernel with the iptables `owner` match (all GKI kernels have it). The installer checks this and aborts if it is missing.
 
 ## Install
-Install from [KernelSU Modules](https://modules.kernelsu.org) or download the ZIP from [Releases](https://github.com/kreza6173-pixel/aegis-firewall/releases) and flash it in your root manager. Reboot, then open the WebUI from the module card.
+Install from [KernelSU Modules](https://modules.kernelsu.org) or download the ZIP from [Releases](https://github.com/privshell/aegis-firewall/releases) and flash it in your root manager. Reboot, then open the WebUI from the module card.
 
 Default mode is blacklist with nothing blocked, so installing changes nothing until you add rules.
 
@@ -64,7 +64,7 @@ Rule letters: `w` Wi-Fi, `m` mobile, `v` VPN, `l` LAN, `r` roaming, `s` block wh
 Bump `version` and `versionCode` in `module/module.prop`, then run the **Release** workflow from the Actions tab (or push a `v*` tag). It tags the commit, validates the ZIP with the KernelSU Modules validator and publishes an immutable release.
 
 ## Support
-AEGIS is free and open source, built in spare time. If it saved you time, you can [support the work with a small crypto donation](https://github.com/kreza6173-pixel/kreza6173-pixel/blob/main/DONATE.md) (USDT on TRC20, or USDC / SOL on Solana). Starring the repo or opening a clear issue helps just as much.
+AEGIS is free and open source, built in spare time. If it saved you time, you can [support the work with a small crypto donation](https://github.com/privshell/privshell/blob/main/DONATE.md) (USDT on TRC20, or USDC / SOL on Solana). Starring the repo or opening a clear issue helps just as much.
 
 ## License
 MIT

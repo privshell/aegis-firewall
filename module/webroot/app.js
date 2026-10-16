@@ -497,7 +497,7 @@ async function renderSettings() {
   <div class="card"><h3>Diagnostics</h3><div id="diag" class="kv"><span>Status</span><span>Loading...</span></div>
     <div class="row2" style="margin-top:12px"><button class="ghost" id="dApply" style="flex:1">Re-apply rules</button><button class="ghost" id="dLog" style="flex:1">Daemon log</button></div>
     <button class="danger" id="dReset" style="width:100%;margin-top:8px">Reset rules in this profile</button></div>
-  <div class="card"><h3>About</h3><div class="kv"><span>Version</span><span>${esc(S.status.version || '-')}</span><span>Engine</span><span>iptables owner match, atomic iptables-restore</span><span>Author</span><span>kreza6173-pixel</span></div></div>`;
+  <div class="card"><h3>About</h3><div class="kv"><span>Version</span><span>${esc(S.status.version || '-')}</span><span>Engine</span><span>iptables owner match, atomic iptables-restore</span><span>Author</span><span>privshell</span></div></div>`;
 
   const box = $('#settingsBox');
   $$('[data-set]', box).forEach(i => i.onchange = () => setSetting(i.dataset.set, i.checked ? '1' : '0'));
